@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #1a1a1a;
+  --input-color: rgb(56, 56, 56);
+}
+
+.main-inputs .main-input {
+  font-family: 'Rubik', sans-serif;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--input-color);
+  color: white;
+}
+
+.main-inputs .input-button {
+  width: 40em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+  position: absolute;
+  top: 10em;
+  left: 50%;
+  -webkit-transform: translatex(-50%);
+          transform: translatex(-50%);
+}
+
+.main-inputs .input-button .item-name-input {
+  border-radius: 5px 0 0 5px;
+  font-size: 20px;
+  padding: 1em;
+}
+
+.main-inputs .input-button .calc-button {
+  background-color: #00b3b3;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  font-weight: 500;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
+  font-size: 20px;
+  padding: 1em;
+}
+
+.main-inputs .input-button .calc-button:hover {
+  -webkit-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+  background-color: cyan;
+}
+
+.main-inputs .item-small-input {
+  position: absolute;
+  width: 20em;
+  left: 50%;
+  -webkit-transform: translatex(-50%);
+          transform: translatex(-50%);
+  padding: 1em;
+}
+
+.main-inputs .base-item-input {
+  top: 17em;
+}
+
+.main-inputs .pre-enhance-item-input {
+  top: 22em;
+}
+
+.main-inputs .post-enhance-item-input {
+  top: 27em;
+}
+
+.main-inputs .main-input:focus {
+  background-color: gray;
+}
+
+.main-inputs .main-input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.main-inputs .main-input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+.main-inputs .main-input:focus::-ms-input-placeholder {
+  color: transparent;
+}
+
+.main-inputs .main-input:focus::placeholder {
+  color: transparent;
+}
+
+.a-input-button {
+  -webkit-animation-name: move-input-button;
+          animation-name: move-input-button;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes move-input-button {
+  to {
+    top: 2em;
+    left: 2em;
+    -webkit-transform: translatex(0);
+            transform: translatex(0);
+    width: 20em;
+  }
+}
+
+@keyframes move-input-button {
+  to {
+    top: 2em;
+    left: 2em;
+    -webkit-transform: translatex(0);
+            transform: translatex(0);
+    width: 20em;
+  }
+}
+
+.a-item-name-input {
+  -webkit-animation-name: move-input;
+          animation-name: move-input;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes move-input {
+  to {
+    padding: 0.5em 1em;
+  }
+}
+
+@keyframes move-input {
+  to {
+    padding: 0.5em 1em;
+  }
+}
+
+.a-calc-button {
+  -webkit-animation-name: move-button;
+          animation-name: move-button;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes move-button {
+  to {
+    padding: 0.5em 1em;
+  }
+}
+
+@keyframes move-button {
+  to {
+    padding: 0.5em 1em;
+  }
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,123 @@
+// index.scss
+
+* {
+    margin: 0;
+    padding: 0;
+
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+
+    background-color: rgb(26, 26, 26);
+
+    // variables
+    --input-color: rgb(56, 56, 56);
+}
+
+.main-inputs {
+    .main-input {
+        font-family: 'Rubik', sans-serif;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--input-color);
+        color: white;
+    }
+
+    .input-button {
+        width: 40em;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        position: absolute;
+        top: 10em;
+        left: 50%;
+        transform: translatex(-50%);
+
+        .item-name-input {
+            border-radius: 5px 0 0 5px;
+            font-size: 20px;
+            padding: 1em;
+        }
+
+        .calc-button {
+            background-color: rgb(0, 179, 179);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            font-weight: 500;
+            transition: background-color 0.5s ease-in-out;
+            font-size: 20px;
+            padding: 1em;
+
+            &:hover {
+                transition: background-color 0.2s ease-in-out;
+                background-color: cyan;
+            }
+        }
+    }
+
+    .item-small-input {
+        position: absolute;
+        width: 20em;
+        left: 50%;
+        transform: translatex(-50%);
+        padding: 1em;
+    }
+
+    .base-item-input {
+        top: 17em;
+    }
+
+    .pre-enhance-item-input {
+        top: 22em;
+    }
+
+    .post-enhance-item-input {
+        top: 27em;
+    }
+
+    .main-input:focus {
+        background-color: gray;
+
+        &::placeholder {
+            color: transparent;
+        }
+    }
+}
+
+// ANIMATIONS
+.a-input-button {
+    animation-name: move-input-button;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes move-input-button {
+    to {
+        top: 2em;
+        left: 2em;
+        transform: translatex(0);
+        width: 20em;
+    }
+}
+
+.a-item-name-input {
+    animation-name: move-input;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes move-input {
+    to {
+        padding: 0.5em 1em;
+    }
+}
+
+.a-calc-button {
+    animation-name: move-button;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes move-button {
+    to {
+        padding: 0.5em 1em;
+    }
+}
