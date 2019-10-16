@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import Tables from './Tables';
 
-interface inputs {
+interface Inputs {
     name: string;
     baseC: string;
     preC: string;
@@ -8,26 +9,26 @@ interface inputs {
 }
 
 const App: React.FC<{}> = (): JSX.Element => {
-    const [inputs, setInputs] = useState<inputs>({
-        name: '',
-        baseC: '',
-        preC: '',
-        postC: ''
+    const [inputs, setInputs] = useState<Inputs>({
+        name: 'a',
+        baseC: 'b',
+        preC: 'c',
+        postC: 'd'
     });
 
-    const handleCalculate = (e: inputs): void => {
+    const handleCalculate = (e: Inputs): void => {
         setInputs(e);
     };
 
     return (
         <div>
-            {/* <Tables inputs={inputs} />
-            <MainInputs handleCalculate={handleCalculate} /> */}
+            <Tables inputs={inputs} />
+            {/* <MainInputs handleCalculate={handleCalculate} /> */}
         </div>
     );
 };
 
-export { App };
+export default App;
 
 // import React, { Component } from 'react';
 // import MainInputs from './MainInputs';
