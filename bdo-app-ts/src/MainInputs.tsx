@@ -1,33 +1,39 @@
 import React, { Component } from 'react';
 
+interface MainInputsType {
+    nameItem: string;
+    baseC: string;
+    preC: string;
+    postC: string;
+}
+
 interface Props {
-    handleCalculate: (inputs: any) => void;
+    handleCalculate: (inputs: MainInputsType) => void;
 }
 
 interface State {
-    mainInputs: {
-        nameItem: string;
-        baseC: number;
-        preC: number;
-        postC: number;
-    };
+    mainInputs: MainInputsType;
 }
 
 class MainInputs extends Component<Props, State> {
-    state = {
+    state: State = {
         mainInputs: {
             nameItem: '',
-            baseC: 0,
-            preC: 0,
-            postC: 0
+            baseC: '',
+            preC: '',
+            postC: ''
         }
     };
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
+        const { name, value }: { name: string; value: string } = event.target;
 
-        // Learn how set state works when you get up retard
-        // this.setState({ name: value });
+        this.setState(state => ({
+            mainInputs: {
+                ...state.mainInputs,
+                [name]: value
+            }
+        }));
     };
 
     moveInputs = () => {
@@ -63,15 +69,31 @@ class MainInputs extends Component<Props, State> {
     };
 
     validInputs = () => {
-        let inputs: any = document.getElementsByClassName('main-input');
+        // Object.keys(this.state.mainInputs).forEach(key => {
+        //     if (this.state.mainInputs[key as keyof MainInputsType] == '') {
+        //         return false;
+        //     }
+        // });
+
+        let inputs: HTMLCollectionOf<Element> = document.getElementsByClassName(
+            'main-input'
+        );
+
+        for (let input of inputs as any) {
+            if (input.value == '') {
+                console.log('User left blank input(s)');
+                return false;
+            }
+        }
+
         return true;
     };
 
     submitInputs = () => {
-        // if (this.validInputs()) {
-        //     this.moveInputs();
-        // }
-        this.props.handleCalculate(this.state);
+        if (this.validInputs()) {
+            // this.moveInputs();
+            this.props.handleCalculate(this.state.mainInputs);
+        }
     };
 
     render() {

@@ -1,32 +1,75 @@
-import React, { Component } from 'react';
-import MainInputs from './MainInputs';
-import Tables from './Tables';
+import React, { useState } from 'react';
 
-interface mainInputs {
-    nameItem: string;
-    baseC: number;
-    preC: number;
-    postC: number;
+interface inputs {
+    name: string;
+    baseC: string;
+    preC: string;
+    postC: string;
 }
 
-class App extends Component {
-    state = {
-        mainInputs: {}
+const App: React.FC<{}> = (): JSX.Element => {
+    const [inputs, setInputs] = useState<inputs>({
+        name: '',
+        baseC: '',
+        preC: '',
+        postC: ''
+    });
+
+    const handleCalculate = (e: inputs): void => {
+        setInputs(e);
     };
 
-    handleCalculate = (inputs: any) => {
-        console.log(inputs);
-        // this.setState({ mainInputs: inputs });
-    };
+    return (
+        <div>
+            {/* <Tables inputs={inputs} />
+            <MainInputs handleCalculate={handleCalculate} /> */}
+        </div>
+    );
+};
 
-    render() {
-        return (
-            <div>
-                <Tables />
-                <MainInputs handleCalculate={this.handleCalculate} />
-            </div>
-        );
-    }
-}
+export { App };
 
-export default App;
+// import React, { Component } from 'react';
+// import MainInputs from './MainInputs';
+// import Tables from './Tables';
+
+// interface MainInputsType {
+//     nameItem: string;
+//     baseC: string;
+//     preC: string;
+//     postC: string;
+// }
+
+// interface Props {}
+
+// interface State {
+//     mainInputs: MainInputsType;
+// }
+
+// class App extends Component<Props, State> {
+//     state: State = {
+//         mainInputs: {
+//             nameItem: '',
+//             baseC: '',
+//             preC: '',
+//             postC: ''
+//         }
+//     };
+
+//     handleCalculate = (inputs: MainInputsType) => {
+//         console.log('calculating...');
+
+//         this.setState({ mainInputs: inputs });
+//     };
+
+//     render() {
+//         return (
+//             <div>
+//                 <Tables mainInputs={this.state.mainInputs} />
+//                 <MainInputs handleCalculate={this.handleCalculate} />
+//             </div>
+//         );
+//     }
+// }
+
+// export default App;

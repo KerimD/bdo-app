@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import Table from './Table';
 
+interface MainInputsType {
+    nameItem: string;
+    baseC: string;
+    preC: string;
+    postC: string;
+}
+
 interface Props {
-    mainInputs?: {
-        nameItem: string;
-        baseC: number;
-        preC: number;
-        postC: number;
-    };
+    mainInputs: MainInputsType;
 }
 
 class Tables extends Component<Props> {
     render() {
-        return <div>ass</div>;
-        // const { name, baseC, preC, postC } = this.props.mainInputs;
-        // return (
-        //     <div>
-        //         <p className="temp">
-        //             Name: {name}, Base: {baseC}, Pre: {preC}, Post: {postC}
-        //         </p>
-        //     </div>
-        // );
+        const { nameItem, baseC, preC, postC } = this.props.mainInputs;
+
+        return (
+            <div>
+                <p className="temp">
+                    Name: {nameItem}, Base: {baseC}, Pre: {preC}, Post: {postC}
+                </p>
+            </div>
+        );
     }
 }
 
