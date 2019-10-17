@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { string } from 'prop-types';
 
 interface IProps {
     inputs: Inputs;
+    currLvl: string;
 }
 
 interface Inputs {
@@ -12,14 +14,6 @@ interface Inputs {
 }
 
 const Table: React.FC<IProps> = (props: IProps): JSX.Element => {
-    const [itemType, setItemType] = useState<string>('Accessory');
-    const [currLvl, setcurrLvl] = useState<string>('TET');
-    const [desiredLvl, setDesiredLvl] = useState<string>('PEN');
-    const [success, setSuccess] = useState<string>('.0344');
-    const [result, setResult] = useState<string>('-12760294.515');
-    const [fs, setFs] = useState<string>('59');
-    const [costFs, setCostFs] = useState<string>('340549441.267');
-
     return (
         <div className="fs-table">
             <div className="fs-table-title">
@@ -96,13 +90,36 @@ const Table: React.FC<IProps> = (props: IProps): JSX.Element => {
     );
 };
 
-const calculate = (
-    itemType: string,
+// result = -12,760,294.515
+const calculateCost = (
     fs: string,
     currLvl: string,
     itemCosts: Inputs
 ): string => {
-    return 'ass';
+    // get item type from name
+    let itemType: string = 'Accessory';
+
+    // get success from fs, currLvl, and itemType
+    let success: string = '.0344';
+
+    // get cost of failstack from fs
+    let costCurrFs: string = '340549441.267';
+
+    // get cost of next failstack from fs
+    let costNextFs: string = '';
+
+    return 'cost';
+};
+
+const calculateCosts = (currLvl: string, itemCosts: Inputs): string[] => {
+    let cost: string = calculateCost('59', currLvl, itemCosts);
+    console.log(cost);
+
+    // for (let fs = 0; fs < 121; fs++) {
+    //     console.log(fs);
+    // }
+
+    return [cost];
 };
 
 export default Table;
