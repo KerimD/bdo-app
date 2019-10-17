@@ -15,6 +15,7 @@ interface Inputs {
 
 const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
     const [currLvl, setCurrLvl] = useState<string>('PEN');
+    
     return (
         <section className="main-section">
             <button className="scroll-left scroll-button">&laquo;</button>

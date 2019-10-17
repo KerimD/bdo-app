@@ -130,11 +130,15 @@
 
     .tables {
         display: none;
-        grid-template-columns: repeat(var(--num-tables), min-content);
+        grid-template-columns: 10px repeat(var(--num-tables), min-content) 10px;
         grid-gap: 3em;
         width: 65em;
         overflow: auto;
         margin-top: 10em;
+
+        &::before, &::after {
+            content: '';
+        }
 
         .fs-table {
             width: 17em;

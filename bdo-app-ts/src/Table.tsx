@@ -100,26 +100,45 @@ const calculateCost = (
     let itemType: string = 'Accessory';
 
     // get success from fs, currLvl, and itemType
-    let success: string = '.0344';
+    let success: number = parseFloat('.0344');
 
     // get cost of failstack from fs
-    let costCurrFs: string = '340549441.267';
+    let costCurrFs: number = parseFloat('340549441.267');
 
     // get cost of next failstack from fs
-    let costNextFs: string = '';
+    let costNextFs: number = parseFloat('');
 
-    return 'cost';
+    let fail: number = 1 - success;
+
+    let cost: number;
+
+    cost = fail * (
+            costNextFs -
+            costCurrFs -
+            parseFloat(itemCosts.baseC) -
+            parseFloat(itemCosts.preC)
+        ) + success * (
+            parseFloat(itemCosts.postC) -
+            costCurrFs -
+            parseFloat(itemCosts.baseC) -
+            parseFloat(itemCosts.preC)
+        );
+
+    return String(cost);
 };
 
 const calculateCosts = (currLvl: string, itemCosts: Inputs): string[] => {
+    let costs: string[] = new Array(121);
     let cost: string = calculateCost('59', currLvl, itemCosts);
     console.log(cost);
+    costs[0] = cost;
 
     // for (let fs = 0; fs < 121; fs++) {
-    //     console.log(fs);
+    //       cost = calculateCost(String(fs), currLvl, itemCosts);
+    //       costs[fs] = cost;
     // }
 
-    return [cost];
+    return costs;
 };
 
 export default Table;
