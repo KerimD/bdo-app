@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MainInputs from './MainInputs';
 import Tables from './Tables';
 
 interface Inputs {
@@ -10,20 +11,20 @@ interface Inputs {
 
 const App: React.FC<{}> = (): JSX.Element => {
     const [inputs, setInputs] = useState<Inputs>({
-        name: 'a',
-        baseC: 'b',
-        preC: 'c',
-        postC: 'd'
+        name: 'None',
+        baseC: 'None',
+        preC: 'None',
+        postC: 'None'
     });
 
-    const handleCalculate = (e: Inputs): void => {
+    const handleInputs = (e: Inputs): void => {
         setInputs(e);
     };
 
     return (
         <div>
             <Tables inputs={inputs} />
-            {/* <MainInputs handleCalculate={handleCalculate} /> */}
+            <MainInputs handleInputs={handleInputs} />
         </div>
     );
 };

@@ -1,140 +1,140 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-interface MainInputsType {
-    nameItem: string;
+interface IProps {
+    handleInputs: (inputs: Inputs) => void;
+}
+
+interface Inputs {
+    name: string;
     baseC: string;
     preC: string;
     postC: string;
 }
 
-interface Props {
-    handleCalculate: (inputs: MainInputsType) => void;
-}
+const MainInputs: React.FC<IProps> = (props: IProps): JSX.Element => {
+    const [inputs, setInputs] = useState<Inputs>({
+        name: 'Red Coral Earing',
+        baseC: '9000000',
+        preC: '16000000',
+        postC: '44000000'
+    });
 
-interface State {
-    mainInputs: MainInputsType;
-}
-
-class MainInputs extends Component<Props, State> {
-    state: State = {
-        mainInputs: {
-            nameItem: '',
-            baseC: '',
-            preC: '',
-            postC: ''
-        }
-    };
-
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value }: { name: string; value: string } = event.target;
 
-        this.setState(state => ({
-            mainInputs: {
-                ...state.mainInputs,
-                [name]: value
-            }
-        }));
+        setInputs({ ...inputs, [name]: value });
     };
 
-    moveInputs = () => {
-        // input button
-        document
-            .getElementsByClassName('input-button')[0]
-            .classList.add('a-input-button');
+    const submitInputs = () => {
+        if (validInputs()) {
+            props.handleInputs(inputs);
+            moveInputs();
 
-        // input
-        document
-            .getElementsByClassName('item-name-input')[0]
-            .classList.add('a-item-name-input');
+            // show tables
+            let tables = document.getElementsByClassName(
+                'tables'
+            ) as HTMLCollectionOf<HTMLElement>;
+            tables[0].style.display = 'grid';
 
-        // button
-        document
-            .getElementsByClassName('calc-button')[0]
-            .classList.add('a-calc-button');
+            // show left button
+            let buttonL = document.getElementsByClassName(
+                'scroll-left'
+            ) as HTMLCollectionOf<HTMLElement>;
+            buttonL[0].style.display = 'inline-block';
 
-        // base
-        document
-            .getElementsByClassName('base-item-input')[0]
-            .classList.add('a-base-item-input');
-
-        // pre
-        document
-            .getElementsByClassName('pre-enhance-item-input')[0]
-            .classList.add('a-pre-enhance-item-input');
-
-        // post
-        document
-            .getElementsByClassName('post-enhance-item-input')[0]
-            .classList.add('a-post-enhance-item-input');
-    };
-
-    validInputs = () => {
-        // Object.keys(this.state.mainInputs).forEach(key => {
-        //     if (this.state.mainInputs[key as keyof MainInputsType] == '') {
-        //         return false;
-        //     }
-        // });
-
-        let inputs: HTMLCollectionOf<Element> = document.getElementsByClassName(
-            'main-input'
-        );
-
-        for (let input of inputs as any) {
-            if (input.value == '') {
-                console.log('User left blank input(s)');
-                return false;
-            }
-        }
-
-        return true;
-    };
-
-    submitInputs = () => {
-        if (this.validInputs()) {
-            // this.moveInputs();
-            this.props.handleCalculate(this.state.mainInputs);
+            // show right button
+            let buttonR = document.getElementsByClassName(
+                'scroll-right'
+            ) as HTMLCollectionOf<HTMLElement>;
+            buttonR[0].style.display = 'inline-block';
         }
     };
 
-    render() {
-        return (
-            <div className="main-inputs">
-                <div className="input-button">
-                    <input
-                        type="text"
-                        name="nameItem"
-                        className="item-name-input main-input"
-                        placeholder="Item"
-                        onChange={this.handleChange}
-                    ></input>
-                    <button onClick={this.submitInputs} className="calc-button">
-                        >
-                    </button>
-                </div>
+    return (
+        <div className="main-inputs">
+            <div className="input-button">
                 <input
                     type="text"
-                    name="baseC"
-                    className="base-item-input item-small-input main-input"
-                    placeholder="Base Item Cost"
-                    onChange={this.handleChange}
+                    name="name"
+                    className="item-name-input main-input"
+                    placeholder="Item"
+                    onChange={handleChange}
                 ></input>
-                <input
-                    type="text"
-                    name="preC"
-                    className="pre-enhance-item-input item-small-input main-input"
-                    placeholder="Pre-Enhance Item Cost"
-                    onChange={this.handleChange}
-                ></input>
-                <input
-                    type="text"
-                    name="postC"
-                    className="post-enhance-item-input item-small-input main-input"
-                    placeholder="Post-Enhance Item Cost"
-                    onChange={this.handleChange}
-                ></input>
+                <button onClick={submitInputs} className="calc-button">
+                    >
+                </button>
             </div>
-        );
+            <input
+                type="text"
+                name="baseC"
+                className="base-item-input item-small-input main-input"
+                placeholder="Base Item Cost"
+                onChange={handleChange}
+            ></input>
+            <input
+                type="text"
+                name="preC"
+                className="pre-enhance-item-input item-small-input main-input"
+                placeholder="Pre-Enhance Item Cost"
+                onChange={handleChange}
+            ></input>
+            <input
+                type="text"
+                name="postC"
+                className="post-enhance-item-input item-small-input main-input"
+                placeholder="Post-Enhance Item Cost"
+                onChange={handleChange}
+            ></input>
+        </div>
+    );
+};
+
+const validInputs = (): boolean => {
+    return true;
+    let inputs: HTMLCollectionOf<Element> = document.getElementsByClassName(
+        'main-input'
+    );
+
+    for (let input of inputs as any) {
+        if (input.value == '') {
+            console.log('User left blank input(s)');
+            return false;
+        }
     }
-}
+
+    return true;
+};
+
+const moveInputs = (): void => {
+    // input button
+    document
+        .getElementsByClassName('input-button')[0]
+        .classList.add('a-input-button');
+
+    // input
+    document
+        .getElementsByClassName('item-name-input')[0]
+        .classList.add('a-item-name-input');
+
+    // button
+    document
+        .getElementsByClassName('calc-button')[0]
+        .classList.add('a-calc-button');
+
+    // base
+    document
+        .getElementsByClassName('base-item-input')[0]
+        .classList.add('a-base-item-input');
+
+    // pre
+    document
+        .getElementsByClassName('pre-enhance-item-input')[0]
+        .classList.add('a-pre-enhance-item-input');
+
+    // post
+    document
+        .getElementsByClassName('post-enhance-item-input')[0]
+        .classList.add('a-post-enhance-item-input');
+};
 
 export default MainInputs;
