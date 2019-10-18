@@ -20,6 +20,7 @@ const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
         <section className="main-section">
             <button className="scroll-left scroll-button">&laquo;</button>
             <div className="tables">
+                {}
                 <Table inputs={props.inputs} currLvl={currLvl} />
                 {/* <Table inputs={props.inputs} />
                 <Table inputs={props.inputs} />
