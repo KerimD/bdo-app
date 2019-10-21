@@ -35,18 +35,6 @@ const MainInputs: React.FC<IProps> = (props: IProps): JSX.Element => {
                 'tables'
             ) as HTMLCollectionOf<HTMLElement>;
             tables[0].style.display = 'grid';
-
-            // show left button
-            let buttonL = document.getElementsByClassName(
-                'scroll-left'
-            ) as HTMLCollectionOf<HTMLElement>;
-            buttonL[0].style.display = 'inline-block';
-
-            // show right button
-            let buttonR = document.getElementsByClassName(
-                'scroll-right'
-            ) as HTMLCollectionOf<HTMLElement>;
-            buttonR[0].style.display = 'inline-block';
         }
     };
 

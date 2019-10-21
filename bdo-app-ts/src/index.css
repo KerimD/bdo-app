@@ -121,35 +121,15 @@
   margin-bottom: 3em;
 }
 
-.main-section .scroll-button {
-  display: none;
-  font-size: 20px;
-  border: none;
-  height: 4em;
-  width: 2em;
-  top: 50%;
-  border-radius: 10px;
-  background-color: var(--highlight-color);
-  position: absolute;
-}
-
-.main-section .scroll-left {
-  left: -3em;
-}
-
-.main-section .scroll-right {
-  right: -3em;
-}
-
 .main-section .tables {
   display: none;
-  -ms-grid-columns: (min-content)[var];
-      grid-template-columns: repeat(var(--num-tables), -webkit-min-content);
-      grid-template-columns: repeat(var(--num-tables), min-content);
+  -ms-grid-columns: 20px (min-content)[var] 20px;
+      grid-template-columns: 20px repeat(var(--num-tables), -webkit-min-content) 20px;
+      grid-template-columns: 20px repeat(var(--num-tables), min-content) 20px;
   grid-gap: 3em;
-  width: 65em;
+  width: 100vw;
   overflow: auto;
-  margin-top: 10em;
+  margin-top: 12em;
 }
 
 .main-section .tables .fs-table {
@@ -226,20 +206,20 @@
 @-webkit-keyframes move-input-button {
   to {
     top: 2em;
-    left: 2em;
+    left: 8em;
     -webkit-transform: translatex(0);
             transform: translatex(0);
-    width: 20em;
+    width: 25em;
   }
 }
 
 @keyframes move-input-button {
   to {
     top: 2em;
-    left: 2em;
+    left: 8em;
     -webkit-transform: translatex(0);
             transform: translatex(0);
-    width: 20em;
+    width: 25em;
   }
 }
 
@@ -254,13 +234,13 @@
 
 @-webkit-keyframes move-input {
   to {
-    padding: 0.5em 1em;
+    padding: 0.8em 1em;
   }
 }
 
 @keyframes move-input {
   to {
-    padding: 0.5em 1em;
+    padding: 0.8em 1em;
   }
 }
 
@@ -275,13 +255,13 @@
 
 @-webkit-keyframes move-button {
   to {
-    padding: 0.5em 1em;
+    padding: 0.8em 1em;
   }
 }
 
 @keyframes move-button {
   to {
-    padding: 0.5em 1em;
+    padding: 0.8em 1em;
   }
 }
 
@@ -296,23 +276,21 @@
 
 @-webkit-keyframes move-base {
   to {
-    padding: 0.5em 1em;
-    top: 2em;
-    left: 40vw;
+    top: 7em;
+    left: 8em;
     -webkit-transform: translatex(0);
             transform: translatex(0);
-    width: 15vw;
+    width: 15em;
   }
 }
 
 @keyframes move-base {
   to {
-    padding: 0.5em 1em;
-    top: 2em;
-    left: 40vw;
+    top: 7em;
+    left: 8em;
     -webkit-transform: translatex(0);
             transform: translatex(0);
-    width: 15vw;
+    width: 15em;
   }
 }
 
@@ -327,23 +305,21 @@
 
 @-webkit-keyframes move-pre {
   to {
-    padding: 0.5em 1em;
-    top: 2em;
-    left: 60vw;
+    top: 7em;
+    left: 26em;
     -webkit-transform: translatex(0);
             transform: translatex(0);
-    width: 15vw;
+    width: 15em;
   }
 }
 
 @keyframes move-pre {
   to {
-    padding: 0.5em 1em;
-    top: 2em;
-    left: 60vw;
+    top: 7em;
+    left: 26em;
     -webkit-transform: translatex(0);
             transform: translatex(0);
-    width: 15vw;
+    width: 15em;
   }
 }
 
@@ -358,29 +334,21 @@
 
 @-webkit-keyframes move-post {
   to {
-    padding: 0.5em 1em;
-    top: 2em;
-    left: 80vw;
+    top: 7em;
+    left: 44em;
     -webkit-transform: translatex(0);
             transform: translatex(0);
-    width: 15vw;
+    width: 15em;
   }
 }
 
 @keyframes move-post {
   to {
-    padding: 0.5em 1em;
-    top: 2em;
-    left: 80vw;
+    top: 7em;
+    left: 44em;
     -webkit-transform: translatex(0);
             transform: translatex(0);
-    width: 15vw;
-  }
-}
-
-@media only screen and (max-width: 1166px) {
-  .main-section .tables {
-    width: 48em;
+    width: 15em;
   }
 }
 
@@ -407,22 +375,6 @@
       -webkit-transform: translatex(0);
               transform: translatex(0);
       width: 90vw;
-    }
-  }
-  @-webkit-keyframes move-input {
-    to {
-    }
-  }
-  @keyframes move-input {
-    to {
-    }
-  }
-  @-webkit-keyframes move-button {
-    to {
-    }
-  }
-  @keyframes move-button {
-    to {
     }
   }
   @-webkit-keyframes move-base {
@@ -481,18 +433,8 @@
   }
 }
 
-@media only screen and (max-width: 909px) {
-  .main-section .tables {
-    width: 31em;
-  }
-}
-
 @media only screen and (max-width: 682px) {
-  .main-section .scroll-button {
-    display: none;
-  }
   .main-section .tables {
-    width: 100vw;
     margin-top: 22em;
   }
   .main-section .tables .fs-table {
@@ -523,22 +465,6 @@
       -webkit-transform: translatex(0);
               transform: translatex(0);
       width: 90vw;
-    }
-  }
-  @-webkit-keyframes move-input {
-    to {
-    }
-  }
-  @keyframes move-input {
-    to {
-    }
-  }
-  @-webkit-keyframes move-button {
-    to {
-    }
-  }
-  @keyframes move-button {
-    to {
     }
   }
   @-webkit-keyframes move-base {

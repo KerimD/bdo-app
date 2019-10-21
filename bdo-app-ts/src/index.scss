@@ -108,37 +108,13 @@
     transform: translatex(-50%);
     margin-bottom: 3em;
 
-    .scroll-button {
-        display: none;
-        font-size: 20px;
-        border: none;
-        height: 4em;
-        width: 2em;
-        top: 50%;
-        border-radius: 10px;
-        background-color: var(--highlight-color);
-        position: absolute;
-    }
-
-    .scroll-left {
-        left: -3em;
-    }
-
-    .scroll-right {
-        right: -3em;
-    }
-
     .tables {
         display: none;
-        grid-template-columns: 10px repeat(var(--num-tables), min-content) 10px;
+        grid-template-columns: 20px repeat(var(--num-tables), min-content) 20px;
         grid-gap: 3em;
-        width: 65em;
+        width: 100vw;
         overflow: auto;
-        margin-top: 10em;
-
-        &::before, &::after {
-            content: '';
-        }
+        margin-top: 12em;
 
         .fs-table {
             width: 17em;
@@ -206,9 +182,9 @@
 @keyframes move-input-button {
     to {
         top: 2em;
-        left: 2em;
+        left: 8em;
         transform: translatex(0);
-        width: 20em;
+        width: 25em;
     }
 }
 
@@ -220,7 +196,7 @@
 
 @keyframes move-input {
     to {
-        padding: 0.5em 1em;
+        padding: 0.8em 1em;
     }
 }
 
@@ -232,7 +208,7 @@
 
 @keyframes move-button {
     to {
-        padding: 0.5em 1em;
+        padding: 0.8em 1em;
     }
 }
 
@@ -244,11 +220,10 @@
 
 @keyframes move-base {
     to {
-        padding: 0.5em 1em;
-        top: 2em;
-        left: 40vw;
+        top: 7em;
+        left: 8em;
         transform: translatex(0);
-        width: 15vw;
+        width: 15em;
     }
 }
 
@@ -260,11 +235,10 @@
 
 @keyframes move-pre {
     to {
-        padding: 0.5em 1em;
-        top: 2em;
-        left: 60vw;
+        top: 7em;
+        left: 26em;
         transform: translatex(0);
-        width: 15vw;
+        width: 15em;
     }
 }
 
@@ -276,17 +250,10 @@
 
 @keyframes move-post {
     to {
-        padding: 0.5em 1em;
-        top: 2em;
-        left: 80vw;
+        top: 7em;
+        left: 44em;
         transform: translatex(0);
-        width: 15vw;
-    }
-}
-
-@media only screen and (max-width: 1166px) {
-    .main-section .tables {
-        width: 48em;
+        width: 15em;
     }
 }
 
@@ -305,16 +272,6 @@
             left: 5vw;
             transform: translatex(0);
             width: 90vw;
-        }
-    }
-
-    @keyframes move-input {
-        to {
-        }
-    }
-
-    @keyframes move-button {
-        to {
         }
     }
 
@@ -346,20 +303,9 @@
     }
 }
 
-@media only screen and (max-width: 909px) {
-    .main-section .tables {
-        width: 31em;
-    }
-}
-
 @media only screen and (max-width: 682px) {
     .main-section {
-        .scroll-button {
-            display: none;
-        }
-
         .tables {
-            width: 100vw;
             margin-top: 22em;
 
             .fs-table {
@@ -386,16 +332,6 @@
             left: 5vw;
             transform: translatex(0);
             width: 90vw;
-        }
-    }
-
-    @keyframes move-input {
-        to {
-        }
-    }
-
-    @keyframes move-button {
-        to {
         }
     }
 
