@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { string } from 'prop-types';
 
 interface IProps {
     inputs: Inputs;
@@ -7,7 +6,7 @@ interface IProps {
 }
 
 interface Inputs {
-    name: string;
+    type: string;
     baseC: string;
     preC: string;
     postC: string;
@@ -112,17 +111,17 @@ const calculateCost = (
 
     let cost: number;
 
-    cost = fail * (
-            costNextFs -
-            costCurrFs -
-            parseFloat(itemCosts.baseC) -
-            parseFloat(itemCosts.preC)
-        ) + success * (
-            parseFloat(itemCosts.postC) -
-            costCurrFs -
-            parseFloat(itemCosts.baseC) -
-            parseFloat(itemCosts.preC)
-        );
+    cost =
+        fail *
+            (costNextFs -
+                costCurrFs -
+                parseFloat(itemCosts.baseC) -
+                parseFloat(itemCosts.preC)) +
+        success *
+            (parseFloat(itemCosts.postC) -
+                costCurrFs -
+                parseFloat(itemCosts.baseC) -
+                parseFloat(itemCosts.preC));
 
     return String(cost);
 };

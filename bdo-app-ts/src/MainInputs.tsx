@@ -5,7 +5,7 @@ interface IProps {
 }
 
 interface Inputs {
-    name: string;
+    type: string;
     baseC: string;
     preC: string;
     postC: string;
@@ -13,7 +13,7 @@ interface Inputs {
 
 const MainInputs: React.FC<IProps> = (props: IProps): JSX.Element => {
     const [inputs, setInputs] = useState<Inputs>({
-        name: 'Red Coral Earing',
+        type: 'accessory',
         baseC: '9000000',
         preC: '16000000',
         postC: '44000000'
@@ -25,55 +25,79 @@ const MainInputs: React.FC<IProps> = (props: IProps): JSX.Element => {
         setInputs({ ...inputs, [name]: value });
     };
 
-    const submitInputs = () => {
-        if (validInputs()) {
-            props.handleInputs(inputs);
-            moveInputs();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();
+        props.handleInputs(inputs);
 
-            // show tables
-            let tables = document.getElementsByClassName(
-                'tables'
-            ) as HTMLCollectionOf<HTMLElement>;
-            tables[0].style.display = 'grid';
-        }
+        // show tables
+        let tables = document.getElementsByClassName(
+            'tables'
+        ) as HTMLCollectionOf<HTMLElement>;
+        tables[0].style.display = 'grid';
     };
 
     return (
-        <div className="main-inputs">
-            <div className="input-button">
+        <form className="main-inputs" onSubmit={handleSubmit}>
+            <div className="select-type">
                 <input
-                    type="text"
-                    name="name"
-                    className="item-name-input main-input"
-                    placeholder="Item"
+                    type="radio"
+                    id="armor"
+                    name="type"
+                    value="armor"
                     onChange={handleChange}
                 ></input>
-                <button onClick={submitInputs} className="calc-button">
-                    >
-                </button>
+                <label className="armor" htmlFor="armor">
+                    Armor
+                </label>
+
+                <input
+                    type="radio"
+                    id="weapon"
+                    name="type"
+                    value="weapon"
+                    onChange={handleChange}
+                ></input>
+                <label className="weapon" htmlFor="weapon">
+                    Weapon
+                </label>
+
+                <input
+                    type="radio"
+                    id="accy"
+                    name="type"
+                    value="accessory"
+                    onChange={handleChange}
+                ></input>
+                <label className="accy" htmlFor="accy">
+                    Accessory
+                </label>
             </div>
+
             <input
                 type="text"
                 name="baseC"
-                className="base-item-input item-small-input main-input"
+                className="base-item-input main-input"
                 placeholder="Base Item Cost"
                 onChange={handleChange}
             ></input>
             <input
                 type="text"
                 name="preC"
-                className="pre-enhance-item-input item-small-input main-input"
+                className="pre-enhance-item-input main-input"
                 placeholder="Pre-Enhance Item Cost"
                 onChange={handleChange}
             ></input>
             <input
                 type="text"
                 name="postC"
-                className="post-enhance-item-input item-small-input main-input"
+                className="post-enhance-item-input main-input"
                 placeholder="Post-Enhance Item Cost"
                 onChange={handleChange}
             ></input>
-        </div>
+            <button className="submit-button" type="submit" value="Submit">
+                Submit
+            </button>
+        </form>
     );
 };
 
@@ -94,21 +118,6 @@ const validInputs = (): boolean => {
 };
 
 const moveInputs = (): void => {
-    // input button
-    document
-        .getElementsByClassName('input-button')[0]
-        .classList.add('a-input-button');
-
-    // input
-    document
-        .getElementsByClassName('item-name-input')[0]
-        .classList.add('a-item-name-input');
-
-    // button
-    document
-        .getElementsByClassName('calc-button')[0]
-        .classList.add('a-calc-button');
-
     // base
     document
         .getElementsByClassName('base-item-input')[0]
