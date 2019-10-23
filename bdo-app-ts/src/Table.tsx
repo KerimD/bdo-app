@@ -95,8 +95,6 @@ const calculateCost = (
     currLvl: string,
     itemCosts: Inputs
 ): string => {
-    // get item type from name
-    let itemType: string = 'Accessory';
 
     // get success from fs, currLvl, and itemType
     let success: number = parseFloat('.0344');

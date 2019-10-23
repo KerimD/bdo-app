@@ -14,15 +14,12 @@ interface Inputs {
 
 const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
     const { inputs } = props;
-    const [tables, setTables] = useState<JSX.Element[] | undefined>(undefined);
-
-    setTables(arrTables(inputs));
 
     return (
         <section className="main-section">
             <div className="tables">
                 <div></div>
-                {tables}
+                {arrTables(inputs)}
                 <div></div>
             </div>
         </section>
@@ -37,7 +34,7 @@ const arrTables = (inputs: Inputs): JSX.Element[] => {
     let accy: string[] = ['PRI', 'DUO', 'TRI', 'TET', 'PEN']
 
     // type accy
-    if (inputs.type == 'accessory') {
+    if (inputs.type === 'accessory') {
         for (let type of accy) {
             arr = [...arr, <Table key={type} inputs={inputs} currLvl={type} />]
         }
