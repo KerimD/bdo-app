@@ -14,17 +14,15 @@ interface Inputs {
 
 const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
     const { inputs } = props;
-    const tables: JSX.Element[] = arrTables(inputs);
+    const [tables, setTables] = useState<JSX.Element[] | undefined>(undefined);
+
+    setTables(arrTables(inputs));
 
     return (
         <section className="main-section">
             <div className="tables">
                 <div></div>
                 {tables}
-                <Table key={'PEN'} inputs={inputs} currLvl={'PEN'} />
-                <Table key={'PEN'} inputs={inputs} currLvl={'PEN'} />
-                <Table key={'PEN'} inputs={inputs} currLvl={'PEN'} />
-                <Table key={'PEN'} inputs={inputs} currLvl={'PEN'} />
                 <div></div>
             </div>
         </section>
@@ -34,5 +32,16 @@ const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
 export default Tables;
 
 const arrTables = (inputs: Inputs): JSX.Element[] => {
-    return [<Table key={'PEN'} inputs={inputs} currLvl={'PEN'} />];
+    let arr: JSX.Element[] = [];
+
+    let accy: string[] = ['PRI', 'DUO', 'TRI', 'TET', 'PEN']
+
+    // type accy
+    if (inputs.type == 'accessory') {
+        for (let type of accy) {
+            arr = [...arr, <Table key={type} inputs={inputs} currLvl={type} />]
+        }
+    }
+
+    return arr;
 };
