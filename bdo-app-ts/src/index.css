@@ -12,7 +12,7 @@
   --input-color: rgb(56, 56, 56);
   --animation-time: 1s;
   --highlight-color: purple;
-  --num-tables: 6;
+  --num-tables: 5;
 }
 
 * {
@@ -213,6 +213,33 @@
   overflow: auto;
 }
 
+.a-select-type {
+  -webkit-animation-name: move-type;
+          animation-name: move-type;
+  -webkit-animation-duration: var(--animation-time);
+          animation-duration: var(--animation-time);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes move-type {
+  to {
+    top: 2em;
+    left: calc(20px + 3em);
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@keyframes move-type {
+  to {
+    top: 2em;
+    left: calc(20px + 3em);
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
 .a-base-item-input {
   -webkit-animation-name: move-base;
           animation-name: move-base;
@@ -225,9 +252,9 @@
 @-webkit-keyframes move-base {
   to {
     top: 7em;
-    left: 8em;
-    -webkit-transform: translatex(0);
-            transform: translatex(0);
+    left: calc(20px + 3em);
+    -webkit-transform: translate(0);
+            transform: translate(0);
     width: 15em;
   }
 }
@@ -235,9 +262,9 @@
 @keyframes move-base {
   to {
     top: 7em;
-    left: 8em;
-    -webkit-transform: translatex(0);
-            transform: translatex(0);
+    left: calc(20px + 3em);
+    -webkit-transform: translate(0);
+            transform: translate(0);
     width: 15em;
   }
 }
@@ -254,9 +281,6 @@
 @-webkit-keyframes move-pre {
   to {
     top: 7em;
-    left: 26em;
-    -webkit-transform: translatex(0);
-            transform: translatex(0);
     width: 15em;
   }
 }
@@ -264,9 +288,6 @@
 @keyframes move-pre {
   to {
     top: 7em;
-    left: 26em;
-    -webkit-transform: translatex(0);
-            transform: translatex(0);
     width: 15em;
   }
 }
@@ -283,9 +304,10 @@
 @-webkit-keyframes move-post {
   to {
     top: 7em;
-    left: 44em;
-    -webkit-transform: translatex(0);
-            transform: translatex(0);
+    left: auto;
+    right: calc(20px + 3em);
+    -webkit-transform: translate(0);
+            transform: translate(0);
     width: 15em;
   }
 }
@@ -293,10 +315,40 @@
 @keyframes move-post {
   to {
     top: 7em;
-    left: 44em;
-    -webkit-transform: translatex(0);
-            transform: translatex(0);
+    left: auto;
+    right: calc(20px + 3em);
+    -webkit-transform: translate(0);
+            transform: translate(0);
     width: 15em;
+  }
+}
+
+.a-submit-button {
+  -webkit-animation-name: move-button;
+          animation-name: move-button;
+  -webkit-animation-duration: var(--animation-time);
+          animation-duration: var(--animation-time);
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes move-button {
+  to {
+    top: 2em;
+    left: auto;
+    right: calc(20px + 3em);
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@keyframes move-button {
+  to {
+    top: 2em;
+    left: auto;
+    right: calc(20px + 3em);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
 }
 

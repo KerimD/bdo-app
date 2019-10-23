@@ -28,6 +28,7 @@ const MainInputs: React.FC<IProps> = (props: IProps): JSX.Element => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         props.handleInputs(inputs);
+        moveInputs();
 
         // show tables
         let tables = document.getElementsByClassName(
@@ -118,6 +119,11 @@ const validInputs = (): boolean => {
 };
 
 const moveInputs = (): void => {
+    // select type
+    document
+        .getElementsByClassName('select-type')[0]
+        .classList.add('a-select-type');
+
     // base
     document
         .getElementsByClassName('base-item-input')[0]
@@ -132,6 +138,11 @@ const moveInputs = (): void => {
     document
         .getElementsByClassName('post-enhance-item-input')[0]
         .classList.add('a-post-enhance-item-input');
+
+    // button
+    document
+        .getElementsByClassName('submit-button')[0]
+        .classList.add('a-submit-button');
 };
 
 export default MainInputs;

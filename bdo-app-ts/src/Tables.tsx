@@ -21,6 +21,10 @@ const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
             <div className="tables">
                 <div></div>
                 {tables}
+                <Table key={'PEN'} inputs={inputs} currLvl={'PEN'} />
+                <Table key={'PEN'} inputs={inputs} currLvl={'PEN'} />
+                <Table key={'PEN'} inputs={inputs} currLvl={'PEN'} />
+                <Table key={'PEN'} inputs={inputs} currLvl={'PEN'} />
                 <div></div>
             </div>
         </section>
