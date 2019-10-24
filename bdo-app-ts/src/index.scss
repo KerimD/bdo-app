@@ -268,39 +268,10 @@
     }
 }
 
-@media only screen and (max-width: 999px) {
+@media only screen and (max-width: 980px) {
     .main-section .tables {
-        margin-top: 15em;
-
         .fs-table .values-fs-table {
             height: 35em;
-        }
-    }
-
-    @keyframes move-base {
-        to {
-            top: 7.5em;
-            left: 5vw;
-            transform: translatex(0);
-            width: 25vw;
-        }
-    }
-
-    @keyframes move-pre {
-        to {
-            top: 7.5em;
-            left: 35vw;
-            transform: translatex(0);
-            width: 25vw;
-        }
-    }
-
-    @keyframes move-post {
-        to {
-            top: 7.5em;
-            left: 65vw;
-            transform: translatex(0);
-            width: 25vw;
         }
     }
 }
@@ -308,7 +279,7 @@
 @media only screen and (max-width: 682px) {
     .main-section {
         .tables {
-            margin-top: 22em;
+            margin-top: 23em;
 
             .fs-table {
                 width: 18em;
@@ -328,30 +299,36 @@
         }
     }
 
+    @keyframes move-type {
+        to {
+            top: 2em;
+        }
+    }
+
     @keyframes move-base {
         to {
-            top: 7.5em;
-            left: 5vw;
-            transform: translatex(0);
+            top: 6em;
             width: 60vw;
         }
     }
 
     @keyframes move-pre {
         to {
-            top: 11.5em;
-            left: 5vw;
-            transform: translatex(0);
+            top: 10em;
             width: 60vw;
         }
     }
 
     @keyframes move-post {
         to {
-            top: 15.5em;
-            left: 5vw;
-            transform: translatex(0);
+            top: 14em;
             width: 60vw;
+        }
+    }
+
+    @keyframes move-button {
+        to {
+            top: 18em;
         }
     }
 }
