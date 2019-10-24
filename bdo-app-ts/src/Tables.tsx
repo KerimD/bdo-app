@@ -31,12 +31,12 @@ export default Tables;
 const arrTables = (inputs: Inputs): JSX.Element[] => {
     let arr: JSX.Element[] = [];
 
-    let accy: string[] = ['PRI', 'DUO', 'TRI', 'TET', 'PEN']
+    let accy: string[] = ['PRI', 'DUO', 'TRI', 'TET', 'PEN'];
 
     // type accy
     if (inputs.type === 'accessory') {
         for (let type of accy) {
-            arr = [...arr, <Table key={type} inputs={inputs} currLvl={type} />]
+            arr = [...arr, <Table key={type} inputs={inputs} currLvl={type} />];
         }
     }
 
