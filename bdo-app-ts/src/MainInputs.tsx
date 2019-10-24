@@ -30,11 +30,13 @@ const MainInputs: React.FC<IProps> = (props: IProps): JSX.Element => {
         props.handleInputs(inputs);
         moveInputs();
 
-        // show tables
-        let tables = document.getElementsByClassName(
-            'tables'
-        ) as HTMLCollectionOf<HTMLElement>;
-        tables[0].style.display = 'grid';
+        (async () => {
+            // show tables
+            let tables = document.getElementsByClassName(
+                'tables'
+            ) as HTMLCollectionOf<HTMLElement>;
+            tables[0].style.display = 'grid';
+        })()
     };
 
     return (
