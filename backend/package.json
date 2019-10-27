@@ -4,7 +4,7 @@
     "description": "backend for bdo app",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "nodemon"
     },
     "author": "Deniz",
     "license": "ISC",
@@ -12,8 +12,11 @@
         "koa": "^2.10.0"
     },
     "devDependencies": {
+        "@types/koa": "^2.0.51",
         "eslint": "^6.6.0",
+        "nodemon": "^1.19.4",
         "prettier": "^1.18.2",
+        "ts-node": "^8.4.1",
         "typescript": "^3.6.4"
     }
 }
