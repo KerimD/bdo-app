@@ -1,6 +1,6 @@
 import Koa from 'koa';
-import Router from 'koa-router';
-import bodyParser = require('body-parser');
+import Router from '@koa/router';
+import bodyParser from 'koa-bodyparser';
 
 const router: Router = new Router();
 const app: Koa = new Koa();
