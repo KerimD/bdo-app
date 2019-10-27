@@ -7,7 +7,7 @@
         "start": "nodemon"
     },
     "author": "Deniz",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "koa": "^2.10.0"
     },
