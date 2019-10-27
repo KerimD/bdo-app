@@ -9,10 +9,12 @@
     "author": "Deniz",
     "license": "MIT",
     "dependencies": {
-        "koa": "^2.10.0"
+        "koa": "^2.10.0",
+        "koa-router": "^7.4.0"
     },
     "devDependencies": {
         "@types/koa": "^2.0.51",
+        "@types/koa-router": "^7.0.42",
         "eslint": "^6.6.0",
         "nodemon": "^1.19.4",
         "prettier": "^1.18.2",
