@@ -129,15 +129,15 @@
     position: absolute;
     left: 50%;
     transform: translatex(-50%);
-    margin-bottom: 3em;
 
     .tables {
         display: none;
-        grid-template-columns: 20px repeat(var(--num-tables), min-content) 20px;
+        grid-template-columns: 1em repeat(var(--num-tables), min-content) 1em;
         grid-gap: 3em;
         width: 100vw;
         overflow: auto;
-        margin-top: 12em;
+        margin-top: 14em;
+        margin-bottom: 2em;
 
         .fs-table {
             width: 17em;
@@ -178,15 +178,17 @@
 
                 .fs-col-title {
                     background: var(--input-color);
+                    color: rgb(180, 180, 180);
                 }
 
                 .cost-col-title {
                     background: var(--input-color);
+                    color: rgb(180, 180, 180);
                 }
             }
 
             .values-fs-table {
-                height: 40em;
+                height: 80vh;
                 display: grid;
                 grid-template-columns: auto 1fr;
                 overflow: auto;
@@ -205,8 +207,7 @@
 @keyframes move-type {
     to {
         top: 2em;
-        left: calc(20px + 3em);
-        transform: translate(0);
+        transform: translate(-27em);
     }
 }
 
@@ -219,8 +220,7 @@
 @keyframes move-base {
     to {
         top: 7em;
-        left: calc(20px + 3em);
-        transform: translate(0);
+        transform: translate(-27em);
         width: 15em;
     }
 }
@@ -247,9 +247,7 @@
 @keyframes move-post {
     to {
         top: 7em;
-        left: auto;
-        right: calc(20px + 3em);
-        transform: translate(0);
+        transform: translate(27em);
         width: 15em;
     }
 }
@@ -262,24 +260,15 @@
 
 @keyframes move-button {
     to {
-        transform: translate(0);
-        right: calc(20px + 3em);
+        transform: translate(27em);
         top: 2em;
     }
 }
 
-@media only screen and (max-width: 980px) {
-    .main-section .tables {
-        .fs-table .values-fs-table {
-            height: 35em;
-        }
-    }
-}
-
-@media only screen and (max-width: 682px) {
+@media only screen and (max-width: 909px) {
     .main-section {
         .tables {
-            margin-top: 23em;
+            margin-top: 28em;
 
             .fs-table {
                 width: 18em;
@@ -293,7 +282,7 @@
                 }
 
                 .values-fs-table {
-                    height: 30em;
+                    height: 40em;
                 }
             }
         }
@@ -301,34 +290,34 @@
 
     @keyframes move-type {
         to {
-            top: 2em;
+            top: 10vh;
         }
     }
 
     @keyframes move-base {
         to {
-            top: 6em;
-            width: 60vw;
+            top: calc(10vh + 4em);
+            width: 20em;
         }
     }
 
     @keyframes move-pre {
         to {
-            top: 10em;
-            width: 60vw;
+            top: calc(10vh + 8em);
+            width: 20em;
         }
     }
 
     @keyframes move-post {
         to {
-            top: 14em;
-            width: 60vw;
+            top: calc(10vh + 12em);
+            width: 20em;
         }
     }
 
     @keyframes move-button {
         to {
-            top: 18em;
+            top: calc(10vh + 16em);
         }
     }
 }
