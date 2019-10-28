@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from './Table';
 
 interface IProps {
@@ -13,13 +13,26 @@ interface Inputs {
 }
 
 const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
-    const { inputs } = props;
+    const [costFs, setCostFs] = useState<number[]>([]);
+
+    useEffect(() => {
+        fetch('http://localhost:8000/fs')
+            .then(res => res.json())
+            .then(
+                data => {
+                    setCostFs(data);
+                },
+                error => {
+                    console.log(error);
+                }
+            );
+    });
 
     return (
         <section className="main-section">
             <div className="tables">
                 <div></div>
-                {arrTables(inputs)}
+                {arrTables(props.inputs, costFs)}
                 <div></div>
             </div>
         </section>
@@ -28,15 +41,23 @@ const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
 
 export default Tables;
 
-const arrTables = (inputs: Inputs): JSX.Element[] => {
+const arrTables = (inputs: Inputs, costFs: number[]): JSX.Element[] => {
     let arr: JSX.Element[] = [];
 
     let accy: string[] = ['PRI', 'DUO', 'TRI', 'TET', 'PEN'];
 
     // type accy
-    if (inputs.type === 'accessory') {
+    if (inputs.type === 'accessory' || true) {
         for (let type of accy) {
-            arr = [...arr, <Table key={type} inputs={inputs} currLvl={type} />];
+            arr = [
+                ...arr,
+                <Table
+                    key={type}
+                    inputs={inputs}
+                    currLvl={type}
+                    costFs={costFs}
+                />
+            ];
         }
     }
 

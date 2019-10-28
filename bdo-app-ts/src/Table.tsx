@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface IProps {
     inputs: Inputs;
     currLvl: string;
+    costFs: number[];
 }
 
 interface Inputs {
@@ -20,73 +21,73 @@ const Table: React.FC<IProps> = (props: IProps): JSX.Element => {
                 <div className="cost-col-title cost-col">Cost</div>
             </div>
 
-            <div className="values-fs-table">
-                {calculateCosts(props.currLvl, props.inputs)}
-            </div>
+            <div className="values-fs-table">{calculateCosts(props)}</div>
         </div>
     );
 };
 
-// result = -12,760,294.515
-const calculateCost = (
-    fs: string,
-    currLvl: string,
-    itemCosts: Inputs
-): string => {
+const calculateCost = (fs: number, props: IProps): string => {
+    const { inputs, currLvl, costFs } = props;
+
     // get success from fs, currLvl, and itemType
-    let success: number = parseFloat('.0344');
+    let success: number = 0;
 
     // get cost of failstack from fs
-    let costCurrFs: number = parseFloat('340549441.267');
+    let costCurrFs: number = costFs[fs];
 
     // get cost of next failstack from fs
-    let costNextFs: number = parseFloat('');
+    let costNextFs: number = costFs[fs + 1];
 
     let fail: number = 1 - success;
 
-    let cost: number;
-
-    cost =
+    let cost: number =
         fail *
             (costNextFs -
                 costCurrFs -
-                parseFloat(itemCosts.baseC) -
-                parseFloat(itemCosts.preC)) +
+                parseFloat(inputs.baseC) -
+                parseFloat(inputs.preC)) +
         success *
-            (parseFloat(itemCosts.postC) -
+            (parseFloat(inputs.postC) -
                 costCurrFs -
-                parseFloat(itemCosts.baseC) -
-                parseFloat(itemCosts.preC));
+                parseFloat(inputs.baseC) -
+                parseFloat(inputs.preC));
 
     return String(cost);
 };
 
-const calculateCosts = (currLvl: string, itemCosts: Inputs): JSX.Element[] => {
-    let costs: JSX.Element[] = new Array(121);
+const calculateCosts = (props: IProps): JSX.Element[] => {
+    let costs: JSX.Element[] = new Array(242);
     let everyOther: boolean = true;
 
-    for (let fs = 0; fs < 121; fs++) {
+    for (let fs = 0; fs < 242; fs++) {
         if (everyOther) {
-            costs = [
-                ...costs,
-                <div key={fs} className="fs-col">
-                    {fs}
-                </div>,
-                <div key={fs + 122} className="cost-col">
+            costs[fs] = (
+                <div key={fs / 2} className="fs-col">
+                    {fs / 2}
+                </div>
+            );
+            fs++;
+            costs[fs] = (
+                <div key={'cost' + String(fs)} className="cost-col">
                     00000000
                 </div>
-            ];
+            );
             everyOther = false;
         } else {
-            costs = [
-                ...costs,
-                <div key={fs} className="fs-col darker-green">
-                    {fs}
-                </div>,
-                <div key={fs + 122} className="cost-col darker-green">
+            costs[fs] = (
+                <div key={fs / 2} className="fs-col darker-green">
+                    {fs / 2}
+                </div>
+            );
+            fs++;
+            costs[fs] = (
+                <div
+                    key={'cost' + String(fs)}
+                    className="cost-col darker-green"
+                >
                     00000000
                 </div>
-            ];
+            );
             everyOther = true;
         }
     }
