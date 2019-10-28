@@ -16,6 +16,8 @@ const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
     const [costFs, setCostFs] = useState<number[]>([]);
 
     useEffect(() => {
+        console.log('ay');
+
         fetch('http://localhost:8000/fs')
             .then(res => res.json())
             .then(
@@ -26,7 +28,7 @@ const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
                     console.log(error);
                 }
             );
-    });
+    }, []);
 
     return (
         <section className="main-section">
@@ -43,7 +45,6 @@ export default Tables;
 
 const arrTables = (inputs: Inputs, costFs: number[]): JSX.Element[] => {
     let arr: JSX.Element[] = [];
-
     let accy: string[] = ['PRI', 'DUO', 'TRI', 'TET', 'PEN'];
 
     // type accy
