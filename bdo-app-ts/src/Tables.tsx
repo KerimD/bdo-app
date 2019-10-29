@@ -16,14 +16,15 @@ interface Inputs {
 
 const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
     const [costFs, setCostFs] = useState<number[]>([]);
+    console.log('test async');
 
-    useEffect(() => {async () => {
+    const fetchFs = async () => {
         let res = await fetch('http://localhost:8000/fs');
         let data = await res.json();
         setCostFs(data);
-    }}, []);
+    }
 
-    console.log('test async');
+    useEffect(() => {fetchFs()}, []);
 
     return (
         <section className="main-section">
