@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Table from './Table';
+import { async } from 'q';
+import { promises } from 'dns';
 
 interface IProps {
     inputs: Inputs;
@@ -15,20 +17,13 @@ interface Inputs {
 const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
     const [costFs, setCostFs] = useState<number[]>([]);
 
-    useEffect(() => {
-        console.log('ay');
+    useEffect(() => {async () => {
+        let res = await fetch('http://localhost:8000/fs');
+        let data = await res.json();
+        setCostFs(data);
+    }}, []);
 
-        fetch('http://localhost:8000/fs')
-            .then(res => res.json())
-            .then(
-                data => {
-                    setCostFs(data);
-                },
-                error => {
-                    console.log(error);
-                }
-            );
-    }, []);
+    console.log('test async');
 
     return (
         <section className="main-section">
