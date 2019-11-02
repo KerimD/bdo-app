@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { SFC } from 'react';
 
 interface IProps {
     inputs: Inputs;
@@ -13,7 +13,7 @@ interface Inputs {
     postC: string;
 }
 
-const Table: React.FC<IProps> = (props: IProps): JSX.Element => {
+const Table: SFC<IProps> = (props: IProps): JSX.Element => {
     return (
         <div className="fs-table">
             <div className="fs-table-title">
@@ -21,16 +21,20 @@ const Table: React.FC<IProps> = (props: IProps): JSX.Element => {
                 <div className="cost-col-title cost-col">Cost</div>
             </div>
 
-            <div className="values-fs-table">{calculateCosts(props)}</div>
+            <div className="values-fs-table">{ calculateCosts(props) }</div>
         </div>
     );
 };
+
+const fetchSuccessChance = (type: string, fs: number, lvl: string): number => {
+    return 0;
+}
 
 const calculateCost = (fs: number, props: IProps): string => {
     const { inputs, currLvl, costFs } = props;
 
     // get success from fs, currLvl, and itemType
-    let success: number = 0;
+    let success: number = fetchSuccessChance(inputs.type, fs, currLvl);
 
     // get cost of failstack from fs
     let costCurrFs: number = costFs[fs];
@@ -59,24 +63,24 @@ const calculateCosts = (props: IProps): JSX.Element[] => {
     let costs: JSX.Element[] = new Array(242);
     let everyOther: boolean = true;
 
-    for (let fs = 0; fs < 242; fs++) {
+    for (let fs = 0; fs < 141; fs++) {
         if (everyOther) {
             costs[fs] = (
-                <div key={fs / 2} className="fs-col">
-                    {fs / 2}
+                <div key={fs} className="fs-col">
+                    {fs}
                 </div>
             );
             fs++;
             costs[fs] = (
                 <div key={'cost' + String(fs)} className="cost-col">
-                    00000000
+                    { calculateCost(fs, props) }
                 </div>
             );
             everyOther = false;
         } else {
             costs[fs] = (
-                <div key={fs / 2} className="fs-col darker-green">
-                    {fs / 2}
+                <div key={fs} className="fs-col darker-green">
+                    {fs}
                 </div>
             );
             fs++;
@@ -85,7 +89,7 @@ const calculateCosts = (props: IProps): JSX.Element[] => {
                     key={'cost' + String(fs)}
                     className="cost-col darker-green"
                 >
-                    00000000
+                    { calculateCost(fs, props) }
                 </div>
             );
             everyOther = true;

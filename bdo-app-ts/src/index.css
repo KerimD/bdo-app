@@ -52,7 +52,6 @@
 
 .main-inputs .select-type label {
   background-color: var(--input-color);
-  color: #b6b6b6;
   padding: 1em 0;
 }
 
@@ -123,7 +122,6 @@
 .main-inputs .submit-button {
   border: none;
   background-color: var(--highlight-color);
-  color: #b6b6b6;
   padding: 1em;
   border-radius: 5px;
   position: absolute;
@@ -138,30 +136,27 @@
   background-color: #c200c2;
 }
 
-.main-section {
+.tables {
+  display: none;
   position: absolute;
   left: 50%;
   -webkit-transform: translatex(-50%);
           transform: translatex(-50%);
-}
-
-.main-section .tables {
-  display: none;
-  -ms-grid-columns: 1em (min-content)[var] 1em;
-      grid-template-columns: 1em repeat(var(--num-tables), -webkit-min-content) 1em;
-      grid-template-columns: 1em repeat(var(--num-tables), min-content) 1em;
-  grid-gap: 3em;
-  width: 100vw;
-  overflow: auto;
-  margin-top: 14em;
+  top: 14em;
   margin-bottom: 2em;
+  justify-items: center;
+  -ms-grid-columns: (auto)[var];
+      grid-template-columns: repeat(var(--num-tables), auto);
+  grid-gap: 3em;
+  width: 90vw;
+  overflow: auto;
 }
 
-.main-section .tables .fs-table {
+.tables .fs-table {
   width: 17em;
 }
 
-.main-section .tables .fs-table .fs-col {
+.tables .fs-table .fs-col {
   padding: 0.5em 0;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -174,7 +169,7 @@
   font-size: 20px;
 }
 
-.main-section .tables .fs-table .cost-col {
+.tables .fs-table .cost-col {
   padding: 0.5em 0 0.5em 1em;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -183,36 +178,36 @@
   font-size: 20px;
 }
 
-.main-section .tables .fs-table .darker-green {
+.tables .fs-table .darker-green {
   background-color: darkgreen;
 }
 
-.main-section .tables .fs-table .darker-red {
+.tables .fs-table .darker-red {
   background-color: darkred;
 }
 
-.main-section .tables .fs-table .recommended {
+.tables .fs-table .recommended {
   border-right: 20px solid var(--highlight-color);
 }
 
-.main-section .tables .fs-table .fs-table-title {
+.tables .fs-table .fs-table-title {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto 1fr;
       grid-template-columns: auto 1fr;
 }
 
-.main-section .tables .fs-table .fs-table-title .fs-col-title {
+.tables .fs-table .fs-table-title .fs-col-title {
   background: var(--input-color);
   color: #b4b4b4;
 }
 
-.main-section .tables .fs-table .fs-table-title .cost-col-title {
+.tables .fs-table .fs-table-title .cost-col-title {
   background: var(--input-color);
   color: #b4b4b4;
 }
 
-.main-section .tables .fs-table .values-fs-table {
+.tables .fs-table .values-fs-table {
   height: 80vh;
   display: -ms-grid;
   display: grid;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import MainInputs from './MainInputs';
 import Tables from './Tables';
 
@@ -9,7 +9,7 @@ interface Inputs {
     postC: string;
 }
 
-const App: React.FC<{}> = (): JSX.Element => {
+const App: FC<{}> = (): JSX.Element => {
     const [inputs, setInputs] = useState<Inputs>({
         type: '',
         baseC: '',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
 interface IProps {
     handleInputs: (inputs: Inputs) => void;
@@ -11,7 +11,7 @@ interface Inputs {
     postC: string;
 }
 
-const MainInputs: React.FC<IProps> = (props: IProps): JSX.Element => {
+const MainInputs: FC<IProps> = (props: IProps): JSX.Element => {
     const [inputs, setInputs] = useState<Inputs>({
         type: 'accessory',
         baseC: '9000000',
@@ -101,22 +101,6 @@ const MainInputs: React.FC<IProps> = (props: IProps): JSX.Element => {
             </button>
         </form>
     );
-};
-
-const validInputs = (): boolean => {
-    return true;
-    let inputs: HTMLCollectionOf<Element> = document.getElementsByClassName(
-        'main-input'
-    );
-
-    for (let input of inputs as any) {
-        if (input.value == '') {
-            console.log('User left blank input(s)');
-            return false;
-        }
-    }
-
-    return true;
 };
 
 const moveInputs = (): void => {

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import Table from './Table';
-import { async } from 'q';
-import { promises } from 'dns';
+
+const API_URI: string = "http://localhost:8000";
 
 interface IProps {
     inputs: Inputs;
@@ -14,12 +14,11 @@ interface Inputs {
     postC: string;
 }
 
-const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
+const Tables: FC<IProps> = ({ inputs }): JSX.Element => {
     const [costFs, setCostFs] = useState<number[]>([]);
-    console.log('test async');
 
     const fetchFs = async () => {
-        let res = await fetch('http://localhost:8000/fs');
+        let res = await fetch(`${API_URI}/fs`);
         let data = await res.json();
         setCostFs(data);
     }
@@ -27,36 +26,27 @@ const Tables: React.FC<IProps> = (props: IProps): JSX.Element => {
     useEffect(() => {fetchFs()}, []);
 
     return (
-        <section className="main-section">
-            <div className="tables">
-                <div></div>
-                {arrTables(props.inputs, costFs)}
-                <div></div>
-            </div>
-        </section>
+        <div className="tables">
+            { arrTables(inputs, costFs) }
+        </div>
     );
 };
 
 export default Tables;
 
 const arrTables = (inputs: Inputs, costFs: number[]): JSX.Element[] => {
-    let arr: JSX.Element[] = [];
     let accy: string[] = ['PRI', 'DUO', 'TRI', 'TET', 'PEN'];
 
     // type accy
     if (inputs.type === 'accessory' || true) {
-        for (let type of accy) {
-            arr = [
-                ...arr,
-                <Table
+        return accy.map((type: string): JSX.Element => <Table
                     key={type}
                     inputs={inputs}
                     currLvl={type}
                     costFs={costFs}
                 />
-            ];
-        }
+        );
     }
-
-    return arr;
 };
+
+// create a button component that takes left or right as props and controls the whatever idk what's going on tbh
