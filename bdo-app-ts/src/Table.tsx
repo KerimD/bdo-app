@@ -30,6 +30,7 @@ const fetchSuccessChance = (type: string, fs: number, lvl: string): number => {
     return 0;
 }
 
+// currently only working for accessories
 const calculateCost = (fs: number, props: IProps): string => {
     const { inputs, currLvl, costFs } = props;
 
