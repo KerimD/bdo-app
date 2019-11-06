@@ -103,6 +103,8 @@ const MainInputs: FC<IProps> = (props: IProps): JSX.Element => {
     );
 };
 
+export default MainInputs;
+
 const moveInputs = (): void => {
     // select type
     document
@@ -129,5 +131,3 @@ const moveInputs = (): void => {
         .getElementsByClassName('submit-button')[0]
         .classList.add('a-submit-button');
 };
-
-export default MainInputs;

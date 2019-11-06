@@ -26,7 +26,7 @@ const Table: SFC<IProps> = (props: IProps): JSX.Element => {
     );
 };
 
-const fetchSuccessChance = (type: string, fs: number, lvl: string): number => {
+const fetchSuccessChance = (type: string, fs: number, lvl: string) => {
     return 0;
 }
 
