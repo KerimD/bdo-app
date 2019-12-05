@@ -5,7 +5,7 @@ interface IProps {
 }
 
 interface Inputs {
-    type: string;
+    typeItem: string;
     baseC: string;
     preC: string;
     postC: string;
@@ -13,7 +13,7 @@ interface Inputs {
 
 const MainInputs: FC<IProps> = (props: IProps): JSX.Element => {
     const [inputs, setInputs] = useState<Inputs>({
-        type: 'accessory',
+        typeItem: 'accessory',
         baseC: '9000000',
         preC: '16000000',
         postC: '44000000'

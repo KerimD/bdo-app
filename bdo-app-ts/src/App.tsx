@@ -3,7 +3,7 @@ import MainInputs from './MainInputs';
 import Tables from './Tables';
 
 interface Inputs {
-    type: string;
+    typeItem: string;
     baseC: string;
     preC: string;
     postC: string;
@@ -11,7 +11,7 @@ interface Inputs {
 
 const App: FC<{}> = (): JSX.Element => {
     const [inputs, setInputs] = useState<Inputs>({
-        type: '',
+        typeItem: '',
         baseC: '',
         preC: '',
         postC: ''

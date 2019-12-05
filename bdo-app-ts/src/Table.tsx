@@ -4,10 +4,11 @@ interface IProps {
   inputs: Inputs;
   currLvl: string;
   costFs: number[];
+  chance: number[][];
 }
 
 interface Inputs {
-  type: string;
+  typeItem: string;
   baseC: string;
   preC: string;
   postC: string;
@@ -26,16 +27,19 @@ const Table: SFC<IProps> = (props: IProps): JSX.Element => {
   );
 };
 
-const fetchSuccessChance = (type: string, fs: number, lvl: string): number => {
-  return 0;
-};
-
 // currently only working for accessories
 const calculateCost = (fs: number, props: IProps): string => {
-  const { inputs, currLvl, costFs } = props;
+  const { inputs, currLvl, costFs, chance } = props;
+  //let currLvlInt: number = -1;
 
-  // get success from fs, currLvl, and itemType
-  let success: number = fetchSuccessChance(inputs.type, fs, currLvl);
+  //if (currLvl === 'PRI') {
+  //  currLvlInt = 0;
+  //}
+  console.log(currLvl);
+  console.log(chance[0][0]);
+
+  // get success from fs
+  let success: number = chance[fs][0];
 
   // get cost of failstack from fs
   let costCurrFs: number = costFs[fs];
