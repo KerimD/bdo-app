@@ -22,13 +22,26 @@ const MainInputs: FC<IProps> = (props: IProps): JSX.Element => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value }: { name: string; value: string } = event.target;
 
+        console.log(name);
         setInputs({ ...inputs, [name]: value });
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        props.handleInputs(inputs);
-        moveInputs();
+        let valid: boolean = true;
+
+        // check to make sure everything has a value
+        Object.values(inputs).forEach((value) => {
+          if (!value.length) {
+            valid = false;
+            return;
+          }
+        });
+
+        if (valid) {
+            props.handleInputs(inputs);
+            moveInputs();
+        }
 
         setTimeout(() => {
             let tables = document.getElementsByClassName(
@@ -44,7 +57,7 @@ const MainInputs: FC<IProps> = (props: IProps): JSX.Element => {
                 <input
                     type="radio"
                     id="armor"
-                    name="type"
+                    name="typeItem"
                     value="armor"
                     onChange={handleChange}
                 ></input>
@@ -55,7 +68,7 @@ const MainInputs: FC<IProps> = (props: IProps): JSX.Element => {
                 <input
                     type="radio"
                     id="weapon"
-                    name="type"
+                    name="typeItem"
                     value="weapon"
                     onChange={handleChange}
                 ></input>
@@ -66,7 +79,7 @@ const MainInputs: FC<IProps> = (props: IProps): JSX.Element => {
                 <input
                     type="radio"
                     id="accy"
-                    name="type"
+                    name="typeItem"
                     value="accessory"
                     onChange={handleChange}
                 ></input>

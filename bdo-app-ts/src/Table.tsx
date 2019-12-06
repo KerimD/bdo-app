@@ -30,22 +30,20 @@ const Table: SFC<IProps> = (props: IProps): JSX.Element => {
 // currently only working for accessories
 const calculateCost = (fs: number, props: IProps): string => {
   const { inputs, currLvl, costFs, chance } = props;
-  //let currLvlInt: number = -1;
+  const { baseC, preC, postC } = inputs
+  const lvlStringToInt: { [key: string]: number } = {'PRI' : 0, 'DUO' : 1, 'TRI' : 2, 'TET' : 3, 'PEN' : 4};
 
-  //if (currLvl === 'PRI') {
-  //  currLvlInt = 0;
-  //}
-  console.log(currLvl);
-  console.log(chance[0][0]);
+  // in order to index the 2d array
+  const currLvlInt = lvlStringToInt[currLvl];
 
   // get success from fs
-  let success: number = chance[fs][0];
+  let success: number = chance[fs-.5][currLvlInt];
 
   // get cost of failstack from fs
-  let costCurrFs: number = costFs[fs];
+  let costCurrFs: number = costFs[fs-.5];
 
   // get cost of next failstack from fs
-  let costNextFs: number = costFs[fs + 1];
+  let costNextFs: number = costFs[fs+1-.5];
 
   let fail: number = 1 - success;
 
@@ -53,15 +51,16 @@ const calculateCost = (fs: number, props: IProps): string => {
     fail *
       (costNextFs -
         costCurrFs -
-        parseFloat(inputs.baseC) -
-        parseFloat(inputs.preC)) +
+        parseFloat(baseC) -
+        parseFloat(preC)) +
     success *
-      (parseFloat(inputs.postC) -
+      (parseFloat(postC) -
         costCurrFs -
-        parseFloat(inputs.baseC) -
-        parseFloat(inputs.preC));
+        parseFloat(baseC) -
+        parseFloat(preC));
 
-  return String(cost);
+  //console.log(currLvl, '-', fs-.5, '*', cost);
+  return String(Math.trunc(cost));
 };
 
 const calculateCosts = (props: IProps): JSX.Element[] => {
